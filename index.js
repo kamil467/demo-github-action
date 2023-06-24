@@ -22,7 +22,7 @@ try {
    age: 30
  }
 let markdownOutput =  render(template,person);
-fs.writeFileSync("./person.md",output);
+fs.writeFileSync("./person.md",markdownOutput);
 } catch (error) {
   core.setFailed(error.message);
 }
