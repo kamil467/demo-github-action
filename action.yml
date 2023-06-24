@@ -8,6 +8,9 @@ inputs:
  sha:
     description: Sha to get PR for. Defaults to current sha.
     required: false
+ release-name:
+    description: Tag release
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'
