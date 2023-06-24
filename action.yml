@@ -1,14 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+ github-token:
+    description: The GitHub token used to create an authenticated client.
+    required: false
+    default: ${{ github.token }}
+  sha:
+    description: Sha to get PR for. Defaults to current sha.
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'

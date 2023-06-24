@@ -10390,6 +10390,219 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 2584:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const github = __importStar(__nccwpck_require__(5739));
+const core = __importStar(__nccwpck_require__(1413));
+function getPullRequestsAssociatedWithCommits(octokit, sha) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const result = yield octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
+            commit_sha: sha
+        });
+        core.debug(`Used url to fetch associated PRs: ${result.url}`);
+        return result.data;
+    });
+}
+exports["default"] = getPullRequestsAssociatedWithCommits;
+
+
+/***/ }),
+
+/***/ 2551:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core = __importStar(__nccwpck_require__(1413));
+const github = __importStar(__nccwpck_require__(5739));
+function getInputs() {
+    const gToken = core.getInput('github-token', { required: true });
+    console.log(`GitHub Token is : ${gToken}`);
+    const commitSha = core.getInput('sha') || github.context.sha;
+    console.log(`Current Commit Sha :${commitSha}`);
+    const releaseName = core.getInput('release-name', { required: true });
+    console.log(`release name :${releaseName}`);
+    return {
+        token: gToken,
+        sha: commitSha,
+        releaseName: releaseName
+    };
+}
+exports["default"] = getInputs;
+
+
+/***/ }),
+
+/***/ 7394:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core = __importStar(__nccwpck_require__(1413));
+const github = __importStar(__nccwpck_require__(5739));
+const getInputs_1 = __importDefault(__nccwpck_require__(2551));
+const get_current_pr_1 = __importDefault(__nccwpck_require__(3464));
+const get_prs_associated_with_commit_1 = __importDefault(__nccwpck_require__(2584));
+const mustache_1 = __nccwpck_require__(378);
+const fs = __importStar(__nccwpck_require__(7147));
+function main() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { token, sha } = (0, getInputs_1.default)();
+            const octokit = github.getOctokit(token);
+            const allPRs = yield (0, get_prs_associated_with_commit_1.default)(octokit, sha);
+            const pr = (0, get_current_pr_1.default)(allPRs, {
+                draft: true,
+                closed: true,
+                preferWithHeadSha: sha
+            });
+            let releaseSummaryTagTemplate = `### Kamil Custom Action for release
+    | Name | Age | Version|
+    |---|---|---|
+    |{{name}} | {{age}} | 1.0.01|
+     `;
+            let person = {
+                name: 'Kamil',
+                age: 30
+            };
+            let markdownOutput = (0, mustache_1.render)(releaseSummaryTagTemplate, person);
+            fs.writeFileSync("./person.md", markdownOutput);
+        }
+        catch (error) {
+            if (error instanceof Error)
+                core.setFailed(error.message);
+        }
+    });
+}
+main();
+
+
+/***/ }),
+
+/***/ 3464:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+function findByHeadSha(pullRequests, sha) {
+    return pullRequests.find(pullRequest => pullRequest.head.sha.startsWith(sha)); // filter the PR which matches with commit sha
+}
+function getLastPullRequest(pullRequests, options) {
+    // filters only open , closed+merged PRS
+    const filteredPRs = pullRequests
+        .filter(({ state }) => state === 'open'); // filtering open PR
+    if (filteredPRs.length === 0)
+        return null;
+    // const defaultChoice = pullRequests[0] // returns only one PR
+    const preferredChoice = options.preferWithHeadSha !== undefined
+        ? findByHeadSha(pullRequests, options.preferWithHeadSha)
+        : null;
+    return preferredChoice;
+}
+exports["default"] = getLastPullRequest;
+
+
+/***/ }),
+
 /***/ 1945:
 /***/ ((module) => {
 
@@ -10564,43 +10777,12 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-console.log("hello world");
-const core = __nccwpck_require__(1413);
-const github = __nccwpck_require__(5739);
-let {render} = __nccwpck_require__(378);
-let fs = __nccwpck_require__(7147);
-
-try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-
-  let releaseSummaryTagTemplate = `### Kamil Custom Action for release
- | Name | Age | Version|
- |---|---|---|
- |{{name}} | {{age}} | 1.0.01|
-  `
- let person = {
-   name: 'Kamil',
-   age: 30
- }
-let markdownOutput =  render(releaseSummaryTagTemplate,person);
-fs.writeFileSync("./person.md",markdownOutput);
-} catch (error) {
-  core.setFailed(error.message);
-}
-
-})();
-
-module.exports = __webpack_exports__;
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nccwpck_require__(7394);
+/******/ 	module.exports = __webpack_exports__;
+/******/ 	
 /******/ })()
 ;
