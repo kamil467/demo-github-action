@@ -15,13 +15,16 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 
-  let readfromFile = fs.readFileSync('./template.md').toString();
-
+  let releaseSummaryTagTemplate = `### Kamil Custom Action for release
+ | Name | Age | Version|
+ |---|---|---|
+ |{{name}} | {{age}} | 1.0.01|
+  `
  let person = {
    name: 'Kamil',
    age: 30
  }
-let markdownOutput =  render(readfromFile,person);
+let markdownOutput =  render(releaseSummaryTagTemplate,person);
 fs.writeFileSync("./person.md",markdownOutput);
 } catch (error) {
   core.setFailed(error.message);
