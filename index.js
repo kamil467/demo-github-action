@@ -15,13 +15,13 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 
- let template = `{{name}} is {{age}} years old.`
+  let readfromFile = fs.readFileSync('./template.md').toString();
 
  let person = {
    name: 'Kamil',
    age: 30
  }
-let markdownOutput =  render(template,person);
+let markdownOutput =  render(readfromFile,person);
 fs.writeFileSync("./person.md",markdownOutput);
 } catch (error) {
   core.setFailed(error.message);
