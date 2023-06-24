@@ -4,7 +4,7 @@ description: 'Greet someone and record the time'
     description: The GitHub token used to create an authenticated client.
     required: false
     default: ${{ github.token }}
-  sha:
+ sha:
     description: Sha to get PR for. Defaults to current sha.
     required: false
 runs:
