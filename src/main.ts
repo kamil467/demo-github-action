@@ -8,17 +8,7 @@ import * as fs from 'fs';
 
 async function main(): Promise<void> {
   try {
-    const {token, sha} = getInputs()
-
-    const octokit = github.getOctokit(token)
-    const allPRs = await getPRsAssociatedWithCommit(octokit, sha)
-
-    const pr = getLastPullRequest(allPRs, {
-      draft: true,
-      closed: true,
-      preferWithHeadSha: sha
-    })
-
+    console.log("Code is here...");
     let releaseSummaryTagTemplate = `### Kamil Custom Action for release
     | Name | Age | Version|
     |---|---|---|
@@ -31,6 +21,18 @@ async function main(): Promise<void> {
    let markdownOutput =  render(releaseSummaryTagTemplate,person);
    fs.writeFileSync("./person.md",markdownOutput);
 
+    const {token, sha} = getInputs()
+
+    const octokit = github.getOctokit(token)
+    const allPRs = await getPRsAssociatedWithCommit(octokit, sha)
+
+    const pr = getLastPullRequest(allPRs, {
+      draft: true,
+      closed: true,
+      preferWithHeadSha: sha
+    })
+
+   
 
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)

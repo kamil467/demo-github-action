@@ -10546,14 +10546,7 @@ const fs = __importStar(__nccwpck_require__(7147));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { token, sha } = (0, getInputs_1.default)();
-            const octokit = github.getOctokit(token);
-            const allPRs = yield (0, get_prs_associated_with_commit_1.default)(octokit, sha);
-            const pr = (0, get_current_pr_1.default)(allPRs, {
-                draft: true,
-                closed: true,
-                preferWithHeadSha: sha
-            });
+            console.log("Code is here...");
             let releaseSummaryTagTemplate = `### Kamil Custom Action for release
     | Name | Age | Version|
     |---|---|---|
@@ -10565,6 +10558,14 @@ function main() {
             };
             let markdownOutput = (0, mustache_1.render)(releaseSummaryTagTemplate, person);
             fs.writeFileSync("./person.md", markdownOutput);
+            const { token, sha } = (0, getInputs_1.default)();
+            const octokit = github.getOctokit(token);
+            const allPRs = yield (0, get_prs_associated_with_commit_1.default)(octokit, sha);
+            const pr = (0, get_current_pr_1.default)(allPRs, {
+                draft: true,
+                closed: true,
+                preferWithHeadSha: sha
+            });
         }
         catch (error) {
             if (error instanceof Error)
