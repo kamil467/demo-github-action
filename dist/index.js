@@ -10547,11 +10547,11 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             console.log("Code is here...");
-            let releaseSummaryTagTemplate = `'### Kamil Custom Action for release
+            let releaseSummaryTagTemplate = `### Kamil Custom Action for release
     | Name | Age | Version|
     |---|---|---|
     |{{name}} | {{age}} | 1.0.01|
-     '`;
+     `;
             let person = {
                 name: 'Kamil',
                 age: 30
