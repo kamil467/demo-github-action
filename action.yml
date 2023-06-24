@@ -1,5 +1,6 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
+inputs:
  github-token:
     description: The GitHub token used to create an authenticated client.
     required: false
