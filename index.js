@@ -1,16 +1,29 @@
 console.log("hello world");
 const core = require('@actions/core');
 const github = require('@actions/github');
+let {render} = require('mustache');
+let fs = require('fs');
 
 try {
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
+  const age = core.getInput('age');
+  console.log(`Age from input is ${age}`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
+
+ let template = `{{name}} is {{age}} years old.`
+
+ let person = {
+   name: 'Kamil',
+   age: 30
+ }
+let markdownOutput =  render(template,person);
+fs.writeFileSync("./person.md",output);
 } catch (error) {
   core.setFailed(error.message);
 }
